@@ -1,6 +1,41 @@
 配置Linux静态IP:
-  ONBOOT=yes
-  BOOTPROTO=static
-  IPADDR=192.196.209.101
-  GATEWAY=192.168.209.2
-  DNS1=192.168.209.2
+  /etc/sysconfig/network-scripts/ifcfg-eth0:
+    ONBOOT=yes
+    BOOTPROTO=static
+    IPADDR=192.196.209.101
+    GATEWAY=192.168.209.2
+    DNS1=192.168.209.2
+    
+DEVICE=eth0
+TYPE=Ethernet
+UUID=90a864b5-f94c-41e9-9e4d-ed9ea2a253e9
+ONBOOT=yes
+NM_CONTROLLED=yes
+BOOTPROTO=static
+HWADDR=00:0C:29:32:48:E2
+DEFROUTE=yes
+PEERDNS=yes
+PEERROUTES=yes
+IPV4_FAILURE_FATAL=yes
+IPV6INIT=no
+NAME="System eth0"
+LAST_CONNECT=1554125237
+IPADDR=192.168.209.101
+GATEWAY=192.168.209.2
+DNS1=192.168.209.2
+
+
+
+给普通用户增加到sudoer组中：
+    /etc/sudoers:在root用户权限下
+      root            ALL=(ALL)       ALL
+      gaoxiang        ALL=(ALL)       ALL
+      
+修改运行权限：
+  修改为3：不启动图形界面
+  sudo vim /etc/inittab
+
+修改HOSTNAME:
+  sudo vim /etc/sysconfig/network:
+    NETWORKING=yes
+    HOSTNAME=Hadoop101
